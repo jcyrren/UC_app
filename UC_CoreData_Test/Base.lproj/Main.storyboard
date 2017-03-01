@@ -421,7 +421,6 @@
                         <segue destination="2PD-gH-jlP" kind="relationship" relationship="viewControllers" id="iGH-Oc-1d4"/>
                         <segue destination="0x1-jo-XZ1" kind="relationship" relationship="viewControllers" id="Znq-bN-l3j"/>
                         <segue destination="7X5-Bg-10W" kind="relationship" relationship="viewControllers" id="L8o-yU-UWq"/>
-                        <segue destination="w5J-ct-rY0" kind="relationship" relationship="viewControllers" id="kfa-l3-oPx"/>
                         <segue destination="HlF-mC-NPz" kind="relationship" relationship="viewControllers" id="ptS-TV-AnM"/>
                         <segue destination="o3L-aO-Xn0" kind="relationship" relationship="viewControllers" id="WHG-Ph-qdj"/>
                     </connections>
@@ -581,11 +580,11 @@
             </objects>
             <point key="canvasLocation" x="2184.8000000000002" y="840.62968515742136"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Triggers-->
         <scene sceneID="IRW-BG-dXj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0x1-jo-XZ1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="mostViewed" id="lKS-eP-zCo"/>
+                    <tabBarItem key="tabBarItem" title="Triggers" id="lKS-eP-zCo"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="h3I-g3-E7n">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -600,7 +599,7 @@
             </objects>
             <point key="canvasLocation" x="2874.4000000000001" y="823.53823088455783"/>
         </scene>
-        <!--Main Graph View Controller-->
+        <!--Graph-->
         <scene sceneID="UtZ-BD-Gdt">
             <objects>
                 <viewController id="o3L-aO-Xn0" customClass="MainGraphViewController" customModule="UC_CoreData_Test" customModuleProvider="target" sceneMemberID="viewController">
@@ -631,7 +630,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="qoY-hf-4rg"/>
+                    <tabBarItem key="tabBarItem" title="Graph" id="qoY-hf-4rg"/>
                     <connections>
                         <outlet property="graph" destination="v6E-zj-s3y" id="LeD-OI-Z4j"/>
                         <outlet property="graphPicker" destination="wRG-QM-D6X" id="xQV-f9-LxO"/>
@@ -639,37 +638,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zVO-1E-P2I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1178.4000000000001" y="805.54722638680664"/>
+            <point key="canvasLocation" x="-681" y="824"/>
         </scene>
-        <!--Info View Controller-->
-        <scene sceneID="l6a-00-T7Y">
-            <objects>
-                <viewController id="w5J-ct-rY0" customClass="InfoViewController" customModule="UC_CoreData_Test" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="F7x-Vk-eq4"/>
-                        <viewControllerLayoutGuide type="bottom" id="EVJ-4U-2tx"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="WzX-dD-jTk">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="This will be the info tab" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xI4-Ny-ycH">
-                                <rect key="frame" x="99" y="131" width="177" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" systemItem="search" id="5bD-TQ-FVq"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EFl-AR-1aU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-538" y="863"/>
-        </scene>
-        <!--Reminders View Controller-->
+        <!--Settings-->
         <scene sceneID="xGX-6A-wDt">
             <objects>
                 <viewController id="HlF-mC-NPz" customClass="RemindersViewController" customModule="UC_CoreData_Test" customModuleProvider="target" sceneMemberID="viewController">
@@ -724,17 +695,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="downloads" id="d6T-L0-6y2"/>
+                    <tabBarItem key="tabBarItem" title="Settings" id="d6T-L0-6y2"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tee-cH-vSc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="160.80000000000001" y="861.3193403298352"/>
         </scene>
-        <!--Item-->
+        <!--Medications-->
         <scene sceneID="HO2-tN-fpN">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7X5-Bg-10W" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="mxB-Ud-FKW"/>
+                    <tabBarItem key="tabBarItem" title="Medications" id="mxB-Ud-FKW"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="c8t-fj-f6l">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -749,11 +720,11 @@
             </objects>
             <point key="canvasLocation" x="797.60000000000002" y="840.62968515742136"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Data Entry-->
         <scene sceneID="WmI-lC-DEU">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2PD-gH-jlP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="recents" id="BG0-s3-fz7"/>
+                    <tabBarItem key="tabBarItem" title="Data Entry" id="BG0-s3-fz7"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="k2v-J9-EOk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
