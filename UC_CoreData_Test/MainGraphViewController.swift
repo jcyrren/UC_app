@@ -35,7 +35,7 @@ class MainGraphViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         graphPicker.dataSource = self
         graphPicker.delegate = self
         
-        //setUpGraphWithData(data: pucaiArray())
+        setUpGraphWithData(data: pucaiArray())
     }
     
     func pucaiArray() -> [Int]{

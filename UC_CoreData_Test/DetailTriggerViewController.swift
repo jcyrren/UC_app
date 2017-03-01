@@ -41,7 +41,7 @@ class DetailTriggerViewContoller: UIViewController, UIPickerViewDataSource, UIPi
         picker.dataSource = self
         picker.delegate = self
         
-        //setUpGraphWithData(data: pucaiArray())
+        setUpGraphWithData(data: pucaiArray())
     }
     
     func filterEntries(_ data: [Entry]) -> [Entry] {
