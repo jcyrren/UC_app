@@ -256,7 +256,6 @@ class TodaysTriggersController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
-        self.tabBarController?.tabBar.isTranslucent = false
     }
 
 }
