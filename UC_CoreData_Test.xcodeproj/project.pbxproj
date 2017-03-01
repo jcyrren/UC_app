@@ -144,7 +144,6 @@
 				TargetAttributes = {
 					849773061E3D7C4B00029FFC = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 3V5C4H4N76;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -323,7 +322,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 3V5C4H4N76;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = UC_CoreData_Test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "CollinsInnovation.UC-CoreData-Test";
@@ -336,7 +335,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 3V5C4H4N76;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = UC_CoreData_Test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "CollinsInnovation.UC-CoreData-Test";

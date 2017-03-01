@@ -32,13 +32,11 @@ class GraphView: UIView {
     }
     
     func pointer(vals: [Int], height : Int, number: Int) -> [Int]{
-        //let length = vals.count - 1
         
-        //let modvals = [vals[length], vals[length - 1], vals[length - 2], vals[length - 3], vals[length - 4], vals[length - 5], vals[length - 6]]
         var modvals : [Int] = []
         for n in 1...number {
             
-            modvals.append(vals[vals.count - n])
+            modvals.insert(vals[vals.count - n], at: 0)
         }
         var finalvals : [Int] = []
         
