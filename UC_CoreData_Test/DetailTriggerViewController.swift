@@ -47,7 +47,7 @@ class DetailTriggerViewContoller: UIViewController, UIPickerViewDataSource, UIPi
     func filterEntries(_ data: [Entry]) -> [Entry] {
         var filteredEntries: [Entry] = []
         for entry in data {
-            if let triggers = entry.triggerArrayAsString?.components(separatedBy: " ") {
+            if let triggers = entry.triggerArrayAsString?.components(separatedBy: ";") {
                 if triggers.contains(triggerName) { filteredEntries.append(entry) }
             }
         }
@@ -144,7 +144,7 @@ class DetailTriggerViewContoller: UIViewController, UIPickerViewDataSource, UIPi
         case "Stool Consistency":
             setUpGraphWithData(data: consistencyArray())
         case "Activity Level":
-            setUpGraphWithData(data: pucaiArray())
+            setUpGraphWithData(data: activityLevelArray())
         case "Number of Stools":
             setUpGraphWithData(data: numStoolsArray())
         case "Abdominal Pain":
