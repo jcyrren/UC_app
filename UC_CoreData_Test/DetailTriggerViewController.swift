@@ -21,6 +21,8 @@ class DetailTriggerViewContoller: UIViewController, UIPickerViewDataSource, UIPi
         }
     }
     
+    var maxHeight = 85
+    
     @IBOutlet var graph: GraphView!
     @IBOutlet var picker: UIPickerView!
     
@@ -47,7 +49,7 @@ class DetailTriggerViewContoller: UIViewController, UIPickerViewDataSource, UIPi
     func filterEntries(_ data: [Entry]) -> [Entry] {
         var filteredEntries: [Entry] = []
         for entry in data {
-            if let triggers = entry.triggerArrayAsString?.components(separatedBy: " ") {
+            if let triggers = entry.triggerArrayAsString?.components(separatedBy: ";") {
                 if triggers.contains(triggerName) { filteredEntries.append(entry) }
             }
         }
@@ -59,6 +61,7 @@ class DetailTriggerViewContoller: UIViewController, UIPickerViewDataSource, UIPi
         for e in entries {
             pucai.append(Int(e.pucaiScore))
         }
+        maxHeight = 85
         return pucai
     }
     
@@ -67,6 +70,7 @@ class DetailTriggerViewContoller: UIViewController, UIPickerViewDataSource, UIPi
         for e in entries {
             nocturnal.append(Int(e.nocturnal))
         }
+        maxHeight = 10
         return nocturnal
     }
     
@@ -75,6 +79,7 @@ class DetailTriggerViewContoller: UIViewController, UIPickerViewDataSource, UIPi
         for e in entries {
             rectalBleeding.append(Int(e.rectalBleeding))
         }
+        maxHeight = 30
         return rectalBleeding
     }
     
@@ -83,6 +88,7 @@ class DetailTriggerViewContoller: UIViewController, UIPickerViewDataSource, UIPi
         for e in entries {
             activityLevel.append(Int(e.activityLevel))
         }
+        maxHeight = 10
         return activityLevel
     }
     
@@ -91,6 +97,7 @@ class DetailTriggerViewContoller: UIViewController, UIPickerViewDataSource, UIPi
         for e in entries {
             abdominalPain.append(Int(e.abdominalPain))
         }
+        maxHeight = 10
         return abdominalPain
     }
     
@@ -99,6 +106,7 @@ class DetailTriggerViewContoller: UIViewController, UIPickerViewDataSource, UIPi
         for e in entries {
             numStools.append(Int(e.numStools))
         }
+        maxHeight = 15
         return numStools
     }
     
@@ -107,12 +115,14 @@ class DetailTriggerViewContoller: UIViewController, UIPickerViewDataSource, UIPi
         for e in entries {
             stoolConsistency.append(Int(e.stoolConsistency))
         }
+        maxHeight = 10
         return stoolConsistency
     }
     
     func setUpGraphWithData(data: [Int]) {
         graph.vals = data
         graph.number = entries.count
+        graph.maxHeight = maxHeight
         graph.setNeedsDisplay()
     }
     
@@ -144,7 +154,7 @@ class DetailTriggerViewContoller: UIViewController, UIPickerViewDataSource, UIPi
         case "Stool Consistency":
             setUpGraphWithData(data: consistencyArray())
         case "Activity Level":
-            setUpGraphWithData(data: pucaiArray())
+            setUpGraphWithData(data: activityLevelArray())
         case "Number of Stools":
             setUpGraphWithData(data: numStoolsArray())
         case "Abdominal Pain":
