@@ -19,6 +19,8 @@ class MainGraphViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     @IBOutlet var graph: GraphView!
     
+    var maxHeight = 85
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,6 +45,7 @@ class MainGraphViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         for e in entries {
             pucai.append(Int(e.pucaiScore))
         }
+        maxHeight = 85
         return pucai
     }
     
@@ -51,6 +54,7 @@ class MainGraphViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         for e in entries {
             nocturnal.append(Int(e.nocturnal))
         }
+        maxHeight = 10
         return nocturnal
     }
     
@@ -59,6 +63,7 @@ class MainGraphViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         for e in entries {
             rectalBleeding.append(Int(e.rectalBleeding))
         }
+        maxHeight = 30
         return rectalBleeding
     }
     
@@ -67,6 +72,7 @@ class MainGraphViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         for e in entries {
             activityLevel.append(Int(e.activityLevel))
         }
+        maxHeight = 10
         return activityLevel
     }
     
@@ -75,6 +81,7 @@ class MainGraphViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         for e in entries {
             abdominalPain.append(Int(e.abdominalPain))
         }
+        maxHeight = 10
         return abdominalPain
     }
     
@@ -83,6 +90,7 @@ class MainGraphViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         for e in entries {
             numStools.append(Int(e.numStools))
         }
+        maxHeight = 15
         return numStools
     }
     
@@ -91,12 +99,14 @@ class MainGraphViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         for e in entries {
             stoolConsistency.append(Int(e.stoolConsistency))
         }
+        maxHeight = 10
         return stoolConsistency
     }
     
     func setUpGraphWithData(data: [Int]) {
         graph.vals = data
         graph.number = entries.count
+        graph.maxHeight = maxHeight
         graph.setNeedsDisplay()
     }
     
