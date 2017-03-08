@@ -12,6 +12,7 @@ import UIKit
 class MainGraphViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
     
     var entries: [Entry] = []
+    var dates: [String] = []
     
     let pickerData = ["PUCAI Score", "Number of Stools", "Stool Consistency", "Nocturnal", "Rectal Bleeding", "Activity Level", "Abdominal Pain"]
     
@@ -29,15 +30,33 @@ class MainGraphViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         
         do {
             self.entries = try context.fetch(Entry.fetchRequest()) as! [Entry]
+            
+            guard entries.count > 0 else {
+                print("ERROR")
+                return
+            }
+            
+            self.dates = setUpDates()
+            
+            graphPicker.dataSource = self
+            graphPicker.delegate = self
+            
+            setUpGraphWithData(data: pucaiArray())
         }
         catch {
             print("ERROR")
         }
-        
-        graphPicker.dataSource = self
-        graphPicker.delegate = self
-        
-        setUpGraphWithData(data: pucaiArray())
+    }
+    
+    func setUpDates() -> [String]{
+        var dates: [String] = []
+        let myFormatter = DateFormatter()
+        myFormatter.dateStyle = .short
+        for e in entries {
+            let date = e.date
+            dates.append(myFormatter.string(from: date as! Date))
+        }
+        return dates
     }
     
     func pucaiArray() -> [Int]{
@@ -107,6 +126,7 @@ class MainGraphViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         graph.vals = data
         graph.number = entries.count
         graph.maxHeight = maxHeight
+        graph.dates = dates
         graph.setNeedsDisplay()
     }
     

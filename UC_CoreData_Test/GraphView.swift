@@ -14,6 +14,8 @@ class GraphView: UIView {
     var number : Int = 9
     var maxHeight: Int = 85
     
+    var dates: [String] = [] // these dates are in "short-style" format and are in the same order as the values of the actual data in the values array
+    
     override func draw(_ rect: CGRect){
         let width = Int(bounds.width)
         let height = Int(bounds.height)
