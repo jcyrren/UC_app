@@ -26,6 +26,7 @@
 		84AE57931E4E5F73007D8713 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE57921E4E5F73007D8713 /* ImageStore.swift */; };
 		84C97B0D1E54E9A7009DCC97 /* MainGraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C97B0C1E54E9A7009DCC97 /* MainGraphViewController.swift */; };
 		84C97B111E54EA2B009DCC97 /* RemindersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C97B101E54EA2B009DCC97 /* RemindersViewController.swift */; };
+		CEBE78E51E7081360097277F /* notificationsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBE78E41E7081360097277F /* notificationsDelegate.swift */; };
 		CEF969541E665EC500E605AC /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF969531E665EC500E605AC /* NotificationManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		84AE57921E4E5F73007D8713 /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		84C97B0C1E54E9A7009DCC97 /* MainGraphViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainGraphViewController.swift; sourceTree = "<group>"; };
 		84C97B101E54EA2B009DCC97 /* RemindersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemindersViewController.swift; sourceTree = "<group>"; };
+		CEBE78E41E7081360097277F /* notificationsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = notificationsDelegate.swift; sourceTree = "<group>"; };
 		CEF969531E665EC500E605AC /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,6 +90,7 @@
 				8497730C1E3D7C4B00029FFC /* ViewController.swift */,
 				840A799E1E3FAF4500B0A3FA /* MainDataViewController.swift */,
 				8497730E1E3D7C4B00029FFC /* Main.storyboard */,
+				CEBE78E41E7081360097277F /* notificationsDelegate.swift */,
 				84C97B101E54EA2B009DCC97 /* RemindersViewController.swift */,
 				84C97B0C1E54E9A7009DCC97 /* MainGraphViewController.swift */,
 				840C58ED1E5F721F002DC1C0 /* GraphView.swift */,
@@ -194,6 +197,7 @@
 				8409B3A71E4110B20023243F /* DetailTriggerViewController.swift in Sources */,
 				8497730B1E3D7C4B00029FFC /* AppDelegate.swift in Sources */,
 				84083C551E4399E900507710 /* MedsTableViewController.swift in Sources */,
+				CEBE78E51E7081360097277F /* notificationsDelegate.swift in Sources */,
 				8409B3A91E4148CA0023243F /* TodaysTriggersController.swift in Sources */,
 				84083C571E439C8900507710 /* DetailMedViewController.swift in Sources */,
 				84AE57931E4E5F73007D8713 /* ImageStore.swift in Sources */,
