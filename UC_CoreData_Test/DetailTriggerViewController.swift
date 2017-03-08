@@ -12,6 +12,7 @@ import UIKit
 class DetailTriggerViewContoller: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     var entries: [Entry] = []
+    var dates: [String] = []
     
     let pickerData = ["PUCAI Score", "Number of Stools", "Stool Consistency", "Nocturnal", "Rectal Bleeding", "Activity Level", "Abdominal Pain"]
     
@@ -35,15 +36,24 @@ class DetailTriggerViewContoller: UIViewController, UIPickerViewDataSource, UIPi
         do {
             let unfilteredEntries = try context.fetch(Entry.fetchRequest()) as! [Entry]
             self.entries = filterEntries(unfilteredEntries)
+            
+            guard entries.count > 0 else {
+                print("ERROR")
+                return
+                // later change this to show on the graph that no data has been entered yet
+            }
+            
+            self.dates = setUpDates()
+            
+            picker.dataSource = self
+            picker.delegate = self
+            
+            setUpGraphWithData(data: pucaiArray())
+            
         }
         catch {
             print("ERROR")
         }
-        
-        picker.dataSource = self
-        picker.delegate = self
-        
-        setUpGraphWithData(data: pucaiArray())
     }
     
     func filterEntries(_ data: [Entry]) -> [Entry] {
@@ -54,6 +64,17 @@ class DetailTriggerViewContoller: UIViewController, UIPickerViewDataSource, UIPi
             }
         }
         return filteredEntries // these are the entries wherein the trigger occured
+    }
+    
+    func setUpDates() -> [String]{
+        var dates: [String] = []
+        let myFormatter = DateFormatter()
+        myFormatter.dateStyle = .short
+        for e in entries {
+            let date = e.date
+            dates.append(myFormatter.string(from: date as! Date))
+        }
+        return dates
     }
     
     func pucaiArray() -> [Int]{
