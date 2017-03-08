@@ -149,7 +149,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="30N-Pd-SSm">
                                         <rect key="frame" x="0.0" y="208" width="327" height="53"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="Stool Consistency (how unformed)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mmZ-UR-UmR">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="Stool Consistency" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mmZ-UR-UmR">
                                                 <rect key="frame" x="0.0" y="0.0" width="327" height="22.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -160,7 +160,7 @@
                                                 <segments>
                                                     <segment title="Formed"/>
                                                     <segment title="Partially"/>
-                                                    <segment title="Fully"/>
+                                                    <segment title="Fully Unformed"/>
                                                 </segments>
                                             </segmentedControl>
                                         </subviews>
