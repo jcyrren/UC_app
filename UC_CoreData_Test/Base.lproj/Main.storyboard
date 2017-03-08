@@ -120,8 +120,8 @@
                                                 <rect key="frame" x="0.0" y="30.5" width="327" height="23.5"/>
                                                 <segments>
                                                     <segment title="No Pain"/>
-                                                    <segment title="Pain Can Be Ignored"/>
-                                                    <segment title="Pain Cannot Be Ignored"/>
+                                                    <segment title="Ignorable"/>
+                                                    <segment title="Unignorable"/>
                                                 </segments>
                                             </segmentedControl>
                                         </subviews>
@@ -159,8 +159,8 @@
                                                 <rect key="frame" x="0.0" y="30.5" width="327" height="23.5"/>
                                                 <segments>
                                                     <segment title="Formed"/>
-                                                    <segment title="Partially Formed"/>
-                                                    <segment title="Completely Unformed"/>
+                                                    <segment title="Partially"/>
+                                                    <segment title="Fully Unformed"/>
                                                 </segments>
                                             </segmentedControl>
                                         </subviews>
@@ -215,9 +215,9 @@
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="etS-gM-QJ3">
                                                 <rect key="frame" x="0.0" y="26.5" width="327" height="28"/>
                                                 <segments>
-                                                    <segment title="No limitation"/>
-                                                    <segment title="Occasional limitation"/>
-                                                    <segment title="Severe restriction"/>
+                                                    <segment title="No limits"/>
+                                                    <segment title="Some limits"/>
+                                                    <segment title="Severe limits"/>
                                                 </segments>
                                             </segmentedControl>
                                         </subviews>
