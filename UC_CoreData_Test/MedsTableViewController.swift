@@ -12,7 +12,7 @@ import CoreData
 
 class MedsTableViewController: UITableViewController {
     //var triggers: Triggers!
-    let nm = NotificationsManager()
+    
     
     var meds: [Medication] = []
     
@@ -63,7 +63,7 @@ class MedsTableViewController: UITableViewController {
         // Insert this new row into the table
         tableView.insertRows(at: [indexPath], with: .automatic)
         
-        nm.newNotification(med: name, mph: med.dailyFreq != 0 ? med.dailyFreq : 24)
+        
         
         
     }

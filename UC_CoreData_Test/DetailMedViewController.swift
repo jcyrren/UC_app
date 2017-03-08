@@ -12,6 +12,8 @@ import CoreData
 
 class DetailMedViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
+    let nm = NotificationsManager()
+    
     @IBOutlet var imageView: UIImageView!
     
     var medName: String! {
@@ -91,6 +93,20 @@ class DetailMedViewController: UIViewController, UITextFieldDelegate, UINavigati
         appDelegate.saveContext()
         med = newMed
         print(med)
+        if (newMed.dailyFreq != 0) {
+            nm.newNotification(med: newMed.name ?? "Medication", mph: newMed.dailyFreq, appearance: newMed.appearance ?? "None given. :(")
+        }
+        else {
+            //nm.cancelAll()
+            nm.center.removePendingNotificationRequests(withIdentifiers: [(newMed.name ?? "test")])
+            nm.center.removeDeliveredNotifications(withIdentifiers: [(newMed.name ?? "test")])
+            /*
+            nm.center.removeAllDeliveredNotifications()
+            
+            nm.center.removeAllPendingNotificationRequests()
+ */
+            
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
