@@ -12,6 +12,7 @@ import UIKit
 class GraphView: UIView {
     var vals : [Int] = [ 0, 80, 40, 50, 60, 55, 55, 67, 85]
     var number : Int = 9
+    var maxHeight: Int = 85
     
     override func draw(_ rect: CGRect){
         let width = Int(bounds.width)
@@ -41,7 +42,7 @@ class GraphView: UIView {
         var finalvals : [Int] = []
         
         for m in modvals {
-            finalvals.append(height - (m * (height/85)))
+            finalvals.append(height - (m * (height/maxHeight)))
         }
         
         return finalvals
