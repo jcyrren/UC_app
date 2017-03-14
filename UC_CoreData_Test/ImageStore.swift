@@ -20,6 +20,7 @@ class ImageStore {
     func imageForKey(key: String) -> UIImage? {
         print(cache)
         print("image for key")
+        print("key: \(key)")
         return cache.object(forKey: key as NSString)
     }
     

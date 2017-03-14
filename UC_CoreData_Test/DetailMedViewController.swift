@@ -19,9 +19,7 @@ class DetailMedViewController: UIViewController, UITextFieldDelegate, UINavigati
             navigationItem.title = medName
         }
     }
-    
-    var imageStore: ImageStore!
-    
+        
     var med: Medication!
     
     var medDose: Double?
@@ -33,6 +31,8 @@ class DetailMedViewController: UIViewController, UITextFieldDelegate, UINavigati
     var key: String?
     
     let imagePicker = UIImagePickerController()
+    
+    var data: NSData?
     
     //var medIndex: Int!
     
@@ -50,16 +50,21 @@ class DetailMedViewController: UIViewController, UITextFieldDelegate, UINavigati
         self.medFreq = self.med.dailyFreq
         
         self.key = self.med.imageKey
+        print("key in class: \(self.key)")
         
         self.appTF.text = self.appearance!
         self.doseTF.text = String(self.medDose!)
         self.freqTF.text = String(self.medFreq!)
         
-        //let key = med.imageKey
+        self.data = self.med.imageData
         
-        if let imageToDisplay = imageStore.imageForKey(key: key!) {
-            imageView.image = imageToDisplay
+        if let imageData = data {
+            if let imageToDisplay = UIImage(data: imageData as Data) {
+                imageView.image = imageToDisplay
+            }
         }
+        
+        print("image in view: \(imageView.image)")
         
         imagePicker.delegate = self
     }
@@ -68,7 +73,7 @@ class DetailMedViewController: UIViewController, UITextFieldDelegate, UINavigati
         let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         
-        print(med)
+        print("original \(med)")
         
         context.delete(med)
         appDelegate.saveContext()
@@ -88,9 +93,10 @@ class DetailMedViewController: UIViewController, UITextFieldDelegate, UINavigati
         newMed.name = medName
         //newMed.imageKey = med.imageKey
         newMed.imageKey = key
+        newMed.imageData = data
         appDelegate.saveContext()
         med = newMed
-        print(med)
+        print("saving \(med)")
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -127,8 +133,8 @@ class DetailMedViewController: UIViewController, UITextFieldDelegate, UINavigati
         
         let image = self.resizeImage(image: chosenImage, targetSize: CGSize.init(width: 100, height: 100))
         
-        //imageStore.setImage(image: image, forKey: med.imageKey!)
-        imageStore.setImage(image: image, forKey: key!)
+        let data = UIImagePNGRepresentation(image) as NSData?
+        self.data = data
         
         imageView.image = image
         

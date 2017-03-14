@@ -16,8 +16,6 @@ class MedsTableViewController: UITableViewController {
     
     var meds: [Medication] = []
     
-    var imageStore: ImageStore!
-    
     @IBAction func addNewMedication(_ sender: AnyObject) {
         
         let alert = UIAlertController(title: "New Medication", message: "Add a medication.", preferredStyle: .alert)
@@ -121,8 +119,6 @@ class MedsTableViewController: UITableViewController {
                                                 let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
                                                 let context = appDelegate.persistentContainer.viewContext
                                                 
-                                                self.imageStore.deleteImageForKey(key: medication.imageKey!)
-                                                
                                                 context.delete(medication)
                                                 appDelegate.saveContext()
                                                 
@@ -155,11 +151,6 @@ class MedsTableViewController: UITableViewController {
                 let detailViewController = segue.destination as! DetailMedViewController
                 detailViewController.med = med
                 detailViewController.medName = med.name
-                detailViewController.imageStore = imageStore
-                /*detailViewController.appearance = med.appearance
-                detailViewController.medDose = med.dosage
-                detailViewController.medFreq = med.dailyFreq
-                detailViewController.medIndex = row*/
             }
         }
     }
@@ -174,8 +165,14 @@ class MedsTableViewController: UITableViewController {
         let context = appDelegate.persistentContainer.viewContext
         
         do {
-            //self.meds.removeAll()
             self.meds = try context.fetch(Medication.fetchRequest()) as! [Medication]
+            /*
+             NOTE: to delete the core data and medications and reset JUST the medications, uncomment the line below as well as the function deleteAll()
+             When you have run the app w/ this (you must click on the medications tab for the code to execute ... recomment the below line so that the function deleteAll() does not run 
+             Then, you can go about adding medications again
+             You need to do this b/c I changed the core data entity for medications --- NOTE, the changes to core data should not affect reminders, only images 
+            self.deleteAll()
+            */
         }
         catch {
             print("ERROR")
@@ -192,4 +189,21 @@ class MedsTableViewController: UITableViewController {
         super.init(coder: aDecoder)
         navigationItem.leftBarButtonItem = editButtonItem
     }
+    
+    /*
+     NOTE: This function is for testing purposes only --- this will clear the core data for medications ... watch out! 
+    private func deleteAll() {
+        let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        do {
+            for m in self.meds {
+                context.delete(m)
+            }
+            appDelegate.saveContext()
+        }
+        catch {
+            print("ERROR")
+        }
+    }*/
 }

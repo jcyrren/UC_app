@@ -17,12 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        let imageStore = ImageStore()
-        
+        /*
         let tabCntrl = window?.rootViewController! as! UITabBarController
         let navCntrl = tabCntrl.viewControllers?[2] as! UINavigationController
-        let medViewCntrl = navCntrl.topViewController as! MedsTableViewController
-        medViewCntrl.imageStore = imageStore
+        let medViewCntrl = navCntrl.topViewController as! MedsTableViewController*/
         
         return true
     }
