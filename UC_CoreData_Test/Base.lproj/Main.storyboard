@@ -483,16 +483,16 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Py6-N3-KUY">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dose: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PaN-e2-5HD">
-                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jfj-P3-83P">
-                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="30"/>
+                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="31"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
@@ -500,16 +500,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="2Df-MZ-diI">
-                                        <rect key="frame" x="0.0" y="50" width="375" height="30"/>
+                                        <rect key="frame" x="0.0" y="51" width="375" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To be taken every __ hours:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cdf-wx-N34">
-                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fMN-c8-saU">
-                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="30"/>
+                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="31"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
@@ -517,16 +517,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="XWs-7E-kpD">
-                                        <rect key="frame" x="0.0" y="100" width="375" height="30"/>
+                                        <rect key="frame" x="0.0" y="102" width="375" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Appearance: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xig-Sc-DS6">
-                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What does it look like?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GPM-a0-z4S">
-                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="30"/>
+                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="31"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
@@ -534,22 +534,13 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MRZ-Za-zPU">
-                                        <rect key="frame" x="0.0" y="150" width="375" height="30"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0FR-p4-aFR">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
-                                                <state key="normal" title="Save Medication"/>
-                                                <connections>
-                                                    <action selector="saveMed:" destination="jNK-eU-YdZ" eventType="touchUpInside" id="PqX-jg-Hrb"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
+                                        <rect key="frame" x="0.0" y="153" width="375" height="59.5"/>
                                     </stackView>
                                     <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="248" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Nnd-nx-Unq">
-                                        <rect key="frame" x="0.0" y="200" width="375" height="290"/>
+                                        <rect key="frame" x="0.0" y="232.5" width="375" height="261.5"/>
                                     </imageView>
                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Yj-7k-JSE">
-                                        <rect key="frame" x="0.0" y="510" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="514" width="375" height="20"/>
                                         <items>
                                             <barButtonItem systemItem="camera" id="IC3-He-STi">
                                                 <connections>
@@ -558,6 +549,13 @@
                                             </barButtonItem>
                                         </items>
                                     </toolbar>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0FR-p4-aFR">
+                                        <rect key="frame" x="0.0" y="554" width="375" height="0.0"/>
+                                        <state key="normal" title="Save Medication"/>
+                                        <connections>
+                                            <action selector="saveMed:" destination="jNK-eU-YdZ" eventType="touchUpInside" id="PqX-jg-Hrb"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
