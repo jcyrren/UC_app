@@ -253,6 +253,12 @@ class TodaysTriggersController: UITableViewController {
         }
     }
     
+    @IBAction func done(_ sender: Any) {
+        // NOTE: this will change if we change the tab order!!!!!! 
+        // Not good code
+        tabBarController?.selectedIndex = 4
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
