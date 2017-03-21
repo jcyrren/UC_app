@@ -23,8 +23,16 @@ class MainDataViewController: UIViewController {
     
     let triggerNames: [String] = ["Milk", "Math Test", "Gluten", "Track Race", "Pizza", "Coffee"]
     
+    var goToGraph = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.reset()
+        if goToGraph { self.presentGraph() }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -38,6 +46,18 @@ class MainDataViewController: UIViewController {
             todaysTriggersCntrl.rectBleeding = rectBleeding.selectedSegmentIndex
             //todaysTriggersCntrl.triggers = triggers
         }
+    }
+    
+    func reset() {
+        let segControls: [UISegmentedControl] = [activityLevel, nocturnal, numStools, rectBleeding, stoolConstistency, abdPain]
+        segControls.map({$0.selectedSegmentIndex = 0}) // data back to normal
+    }
+    
+    func presentGraph() {
+        // NOTE: this will change if we change the tab order!!!!!!
+        // Not good code
+        self.goToGraph = false
+        tabBarController?.selectedIndex = 4
     }
     
 }

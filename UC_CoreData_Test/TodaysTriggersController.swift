@@ -254,9 +254,9 @@ class TodaysTriggersController: UITableViewController {
     }
     
     @IBAction func done(_ sender: Any) {
-        // NOTE: this will change if we change the tab order!!!!!! 
-        // Not good code
-        tabBarController?.selectedIndex = 4
+        let root = navigationController?.viewControllers[0] as! MainDataViewController
+        root.goToGraph = true // NOTE: this is bad code ... how can this be improved?
+        self.navigationController?.popViewController(animated: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
