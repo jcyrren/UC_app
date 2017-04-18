@@ -50,7 +50,7 @@ class MainDataViewController: UIViewController {
     
     func reset() {
         let segControls: [UISegmentedControl] = [activityLevel, nocturnal, numStools, rectBleeding, stoolConstistency, abdPain]
-        segControls.map({$0.selectedSegmentIndex = 0}) // data back to normal
+        segControls.map{$0.selectedSegmentIndex = 0} // data back to normal
     }
     
     func presentGraph() {

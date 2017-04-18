@@ -8,6 +8,9 @@
 
 import Foundation
 import UIKit
+import FirebaseDatabase
+import FirebaseAuth
+import Firebase
 
 class TodaysTriggersController: UITableViewController {
     //var triggers: Triggers!
@@ -22,6 +25,9 @@ class TodaysTriggersController: UITableViewController {
     var nocturnal: Int!
 
     var pucaiScore = 0
+    
+    var ref: FIRDatabaseReference?
+    var uid: String?
     
     @IBAction func doneWithEntry(_ sender: UIButton) {
         // This is where the final entry will be saved
@@ -72,70 +78,76 @@ class TodaysTriggersController: UITableViewController {
     
     func convertToScore() {
         // convert all indexes to PUCAI scores
+        var actLev: Int = 0
+        var noct: Int = 0
+        var abPain: Int = 0
+        var rect: Int = 0
+        var const: Int = 0
+        var num: Int = 0
         switch activityLevel {
         case 0:
-            activityLevel = 0
+            actLev = 0
         case 1:
-            activityLevel = 5
+            actLev = 5
         case 2:
-            activityLevel = 10
+            actLev = 10
         default:
             break
         }
         switch nocturnal {
         case 0:
-            nocturnal = 0
+            noct = 0
         case 1:
-            nocturnal = 10
+            noct = 10
         default:
             break
         }
         switch abdPain {
         case 0:
-            abdPain = 0
+            abPain = 0
         case 1:
-            abdPain = 5
+            abPain = 5
         case 2:
-            abdPain = 10
+            abPain = 10
         default:
             break
         }
         switch numStools {
         case 0:
-            numStools = 0
+            num = 0
         case 1:
-            numStools = 5
+            num = 5
         case 2:
-            numStools = 10
+            num = 10
         case 3:
-            numStools = 15
+            num = 15
         default:
             break
         }
         switch rectBleeding {
         case 0:
-            rectBleeding = 0
+            rect = 0
         case 1:
-            rectBleeding = 10
+            rect = 10
         case 2:
-            rectBleeding = 20
+            rect = 20
         case 3:
-            rectBleeding = 30
+            rect = 30
         default:
             break
         }
         switch stoolConsistency {
         case 0:
-            stoolConsistency = 0
+            const = 0
         case 1:
-            stoolConsistency = 5
+            const = 5
         case 2:
-            stoolConsistency = 10
+            const = 10
         default:
             break
         }
         
-        pucaiScore += stoolConsistency + rectBleeding + numStools + nocturnal + abdPain + activityLevel
+        pucaiScore = const + rect + num + noct + abPain + actLev
         
     }
     
@@ -155,6 +167,15 @@ class TodaysTriggersController: UITableViewController {
         convertToScore()
         entry.pucaiScore = Int16(pucaiScore)
         
+        
+        // FIREBASE version ....
+        
+        guard let database = ref, let user = uid else {
+            return
+        }
+        
+        convertToScore()
+        
         //let cell = tableView.dequeueReusableCell(withIdentifier: "triggerCell", for: indexPath) as! TriggerCell
         let cells = self.tableView.visibleCells as! [TriggerCell]
         var todaysTriggers: [String] = []
@@ -168,15 +189,29 @@ class TodaysTriggersController: UITableViewController {
         // turn array into strings
         //let arrayAsString = triggers.triggerNames.joined(separator: ";")
         if todaysTriggers.count != 0 {
+            
+            let date = NSDate()
+            let myFormatter = DateFormatter()
+            myFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+            
             let arrayAsString = todaysTriggers.joined(separator: ";")
             entry.triggerArrayAsString = arrayAsString
+            database.child("users").child(user).child("entries").child(myFormatter.string(from: date as Date)).setValue(["pucaiScore": Int16(pucaiScore), "numStools": Int16(numStools), "activityLevel": Int16(activityLevel), "stoolConsistency": Int16(stoolConsistency), "nocturnal": Int16(nocturnal), "rectalBleeding": Int16(rectBleeding), "abdominalPain": Int16(abdPain), "triggerArrayAsString": arrayAsString])
+            
         } else {
+            
+            let date = NSDate()
+            let myFormatter = DateFormatter()
+            myFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+            
             entry.triggerArrayAsString = nil
+            database.child("users").child(user).child("entries").child(myFormatter.string(from: date as! Date)).setValue(["pucaiScore": Int16(pucaiScore), "numStools": Int16(numStools), "activityLevel": Int16(activityLevel), "stoolConsistency": Int16(stoolConsistency), "nocturnal": Int16(nocturnal), "rectalBleeding": Int16(rectBleeding),"abdominalPain": Int16(abdPain), "triggerArrayAsString": ""])
         }
         
         appDelegate.saveContext()
         // for now ...
         retrieveEntries()
+        
     }
     
     func retrieveEntries() {
@@ -251,6 +286,15 @@ class TodaysTriggersController: UITableViewController {
         catch {
             print("ERROR")
         }
+        
+        ref = FIRDatabase.database().reference()
+        
+        guard let currentUserID = appDelegate.uid else {
+            self.uid = nil
+            return
+        }
+        
+        self.uid = currentUserID
     }
     
     @IBAction func done(_ sender: Any) {

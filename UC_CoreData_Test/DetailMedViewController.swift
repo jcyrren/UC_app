@@ -9,6 +9,9 @@
 import Foundation
 import UIKit
 import CoreData
+import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 
 class DetailMedViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
@@ -33,6 +36,9 @@ class DetailMedViewController: UIViewController, UITextFieldDelegate, UINavigati
     let imagePicker = UIImagePickerController()
     
     var data: NSData?
+    
+    var ref: FIRDatabaseReference?
+    var uid: String?
     
     //var medIndex: Int!
     
@@ -67,6 +73,17 @@ class DetailMedViewController: UIViewController, UITextFieldDelegate, UINavigati
         print("image in view: \(imageView.image)")
         
         imagePicker.delegate = self
+        
+        let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
+
+        ref = FIRDatabase.database().reference()
+        
+        guard let currentUserID = appDelegate.uid else {
+            self.uid = nil
+            return
+        }
+        
+        self.uid = currentUserID
     }
     
     @IBAction func saveMed(_ sender: Any) {
@@ -97,6 +114,14 @@ class DetailMedViewController: UIViewController, UITextFieldDelegate, UINavigati
         appDelegate.saveContext()
         med = newMed
         print("saving \(med)")
+        
+        // FIREBASE!!!!
+        guard let database = ref, let user = uid else {
+            return
+        }
+        
+        database.child("users").child(user).child("medications").child("\(medName)").setValue(["name": medName, "imageKey": key ?? "", "imageData": data, "dosage": (Double(doseTF.text!) ?? 0.0) , "dailyFreq": (Int32(doseTF.text!) ?? 0), "appearance": appTF.text!])
+    
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
