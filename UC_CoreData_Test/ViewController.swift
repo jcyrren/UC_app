@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 
 class ViewController: UIViewController, UITextFieldDelegate {
+    
+   /* http://stackoverflow.com/questions/32611760/swift-core-data-sync-with-web-server */
 
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var ageTextField: UITextField!

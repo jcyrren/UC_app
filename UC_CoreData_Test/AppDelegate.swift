@@ -8,11 +8,13 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var uid: String?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -22,7 +24,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navCntrl = tabCntrl.viewControllers?[2] as! UINavigationController
         let medViewCntrl = navCntrl.topViewController as! MedsTableViewController*/
         
+        // Use Firebase library to configure APIs
+        FIRApp.configure()
+        
         return true
+    }
+    
+    func switchToTabCntrl() {
+        let tabCntrl = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarID") as! UITabBarController
+        //let navCntrl = tabCntrl.viewControllers![4] as! UINavigationController
+        //let mainGraphVC = navCntrl.viewControllers[0] as! MainGraphViewController
+        window?.rootViewController = tabCntrl//navCntrl//mainGraphVC
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

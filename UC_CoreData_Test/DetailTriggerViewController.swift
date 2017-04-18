@@ -8,10 +8,14 @@
 
 import Foundation
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
+import Firebase
 
 class DetailTriggerViewContoller: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    var entries: [Entry] = []
+    //var entries: [Entry] = []
+    var entries: NSDictionary?
     var dates: [String] = []
     
     let pickerData = ["PUCAI Score", "Number of Stools", "Stool Consistency", "Nocturnal", "Rectal Bleeding", "Activity Level", "Abdominal Pain"]
@@ -24,6 +28,9 @@ class DetailTriggerViewContoller: UIViewController, UIPickerViewDataSource, UIPi
     
     var maxHeight = 85
     
+    var ref: FIRDatabaseReference?
+    var uid: String?
+    
     @IBOutlet var graph: GraphView!
     @IBOutlet var picker: UIPickerView!
     
@@ -31,7 +38,7 @@ class DetailTriggerViewContoller: UIViewController, UIPickerViewDataSource, UIPi
         super.viewDidLoad()
         
         let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
+        /*let context = appDelegate.persistentContainer.viewContext
         
         do {
             let unfilteredEntries = try context.fetch(Entry.fetchRequest()) as! [Entry]
@@ -53,9 +60,49 @@ class DetailTriggerViewContoller: UIViewController, UIPickerViewDataSource, UIPi
         }
         catch {
             print("ERROR")
+        }*/
+        
+        ref = FIRDatabase.database().reference()
+        
+        guard let currentUserID = appDelegate.uid else {
+            self.uid = nil
+            return
+        }
+        
+        self.uid = currentUserID
+        
+        retrieveFirebaseData()
+        
+        picker.dataSource = self
+        picker.delegate = self
+        
+    }
+    
+    func retrieveFirebaseData() {
+        
+        guard let userID = uid else {
+            print("ERROR: no current user")
+            return
+        }
+        
+        ref?.child("users").child(userID).child("entries").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            let unfilteredEntries = snapshot.value as? NSDictionary
+            self.entries = self.filterEntries(unfilteredEntries)
+            
+            if self.entries != nil && self.entries!.count > 0 {
+                //self.dates = self.entries!.allKeys as! [String]
+                self.setUpGraphWithData(data: self.pucaiArray())
+            } else {
+                print("ERROR: no entries /n Cannot make graph until data is entered")
+            }
+            
+        }) { (error) in
+            print(error.localizedDescription)
         }
     }
     
+    /*
     func filterEntries(_ data: [Entry]) -> [Entry] {
         var filteredEntries: [Entry] = []
         for entry in data {
@@ -64,8 +111,104 @@ class DetailTriggerViewContoller: UIViewController, UIPickerViewDataSource, UIPi
             }
         }
         return filteredEntries // these are the entries wherein the trigger occured
+    }*/
+    
+    func filterEntries(_ data: NSDictionary?) -> NSDictionary? {
+        
+        guard let data = data else {
+            return nil
+        }
+        
+        var filteredEntries = NSMutableDictionary()
+        
+        for (k, v) in data {
+            let dict = v as! NSDictionary
+            let trigString = dict["triggerArrayAsString"] as? String
+            if let triggers = trigString?.components(separatedBy: ";") {
+                if triggers.contains(triggerName) {
+                    filteredEntries[k] = v
+                    self.dates.append(k as! String)
+                }
+            }
+        }
+        
+        return filteredEntries // these are the entries wherein the trigger occured
     }
     
+    func pucaiArray() -> [Int]{
+        var pucai: [Int] = []
+        
+        for d in dates {
+            let entry = entries?[d] as! NSDictionary
+            pucai.append(Int(entry["pucaiScore"] as! Int16))
+        }
+        
+        
+        maxHeight = 85
+        return pucai
+    }
+    
+    func nocturnalArray() -> [Int]{
+        var nocturnal: [Int] = []
+        for d in dates {
+            let entry = entries?[d] as! NSDictionary
+            nocturnal.append(Int(entry["nocturnal"] as! Int16))
+        }
+        maxHeight = 1
+        return nocturnal
+    }
+    
+    func bleedingArray() -> [Int]{
+        var rectalBleeding: [Int] = []
+        for d in dates {
+            let entry = entries?[d] as! NSDictionary
+            rectalBleeding.append(Int(entry["rectalBleeding"] as! Int16))
+        }
+        maxHeight = 3
+        return rectalBleeding
+    }
+    
+    func activityLevelArray() -> [Int]{
+        var activityLevel: [Int] = []
+        for d in dates {
+            let entry = entries?[d] as! NSDictionary
+            activityLevel.append(Int(entry["activityLevel"] as! Int16))
+        }
+        maxHeight = 2
+        return activityLevel
+    }
+    
+    func abdPainArray() -> [Int]{
+        var abdominalPain: [Int] = []
+        for d in dates {
+            let entry = entries?[d] as! NSDictionary
+            abdominalPain.append(Int(entry["abdominalPain"] as! Int16))
+        }
+        maxHeight = 2
+        return abdominalPain
+    }
+    
+    func numStoolsArray() -> [Int]{
+        var numStools: [Int] = []
+        for d in dates {
+            let entry = entries?[d] as! NSDictionary
+            numStools.append(Int(entry["numStools"] as! Int16))
+        }
+        maxHeight = 3
+        return numStools
+    }
+    
+    func consistencyArray() -> [Int]{
+        var stoolConsistency: [Int] = []
+        for d in dates {
+            let entry = entries?[d] as! NSDictionary
+            stoolConsistency.append(Int(entry["stoolConsistency"] as! Int16))
+        }
+        maxHeight = 2
+        return stoolConsistency
+    }
+    
+    /*
     func setUpDates() -> [String]{
         var dates: [String] = []
         let myFormatter = DateFormatter()
@@ -139,10 +282,12 @@ class DetailTriggerViewContoller: UIViewController, UIPickerViewDataSource, UIPi
         maxHeight = 10
         return stoolConsistency
     }
+    */
     
     func setUpGraphWithData(data: [Int]) {
         graph.vals = data
-        graph.number = entries.count
+        //graph.number = entries.count
+        graph.number = dates.count
         graph.maxHeight = maxHeight
         graph.setNeedsDisplay()
     }

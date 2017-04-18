@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="JCK-wK-BDh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ndw-Xx-mRE">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Authentication View Controller-->
         <scene sceneID="AVi-iQ-F4B">
             <objects>
-                <viewController id="ndw-Xx-mRE" customClass="ViewController" customModule="UC_CoreData_Test" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ndw-Xx-mRE" customClass="AuthenticationViewController" customModule="UC_CoreData_Test" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hy6-9p-ZQ2"/>
                         <viewControllerLayoutGuide type="bottom" id="9Ig-V5-Blr"/>
@@ -22,69 +22,62 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Stv-K0-qwi">
-                                <rect key="frame" x="78" y="235" width="74" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Stv-K0-qwi">
+                                <rect key="frame" x="16" y="240" width="125" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tlv-q3-8MC">
-                                <rect key="frame" x="199" y="235" width="97" height="30"/>
+                                <rect key="frame" x="78" y="235" width="281" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Age:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wid-8n-nKW">
-                                <rect key="frame" x="78" y="291" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WFd-au-SED">
-                                <rect key="frame" x="199" y="291" width="97" height="30"/>
+                                <rect key="frame" x="107" y="291" width="252" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rLc-L9-4a8">
-                                <rect key="frame" x="187" y="354" width="121" height="29"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="giX-Ck-lwB">
+                                <rect key="frame" x="159" y="415" width="57" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Female"/>
-                                    <segment title="Male"/>
-                                </segments>
-                            </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sex: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRj-6C-xLs">
-                                <rect key="frame" x="78" y="356" width="42" height="21"/>
+                                <state key="normal" title="Register"/>
+                                <connections>
+                                    <action selector="registerUser:" destination="ndw-Xx-mRE" eventType="touchUpInside" id="iya-ms-C4h"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Password: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wid-8n-nKW">
+                                <rect key="frame" x="16" y="291" width="83" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="giX-Ck-lwB">
-                                <rect key="frame" x="164" y="480" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1zc-id-dHR">
+                                <rect key="frame" x="162" y="490" width="50" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Done "/>
+                                <state key="normal" title="Sign-In"/>
                                 <connections>
-                                    <action selector="pressedDone:" destination="ndw-Xx-mRE" eventType="touchUpInside" id="5ho-hB-WKb"/>
+                                    <action selector="signInUser:" destination="ndw-Xx-mRE" eventType="touchUpInside" id="HcC-zb-RVd"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="qq4-bm-lIz"/>
                     <connections>
-                        <outlet property="ageTextField" destination="WFd-au-SED" id="Z8y-vV-x7S"/>
-                        <outlet property="nameTextField" destination="tlv-q3-8MC" id="8SV-r1-Ldn"/>
-                        <outlet property="sexSegControl" destination="rLc-L9-4a8" id="MYY-cf-0Mf"/>
+                        <outlet property="emailTF" destination="tlv-q3-8MC" id="UnE-4R-YNi"/>
+                        <outlet property="passwordTF" destination="WFd-au-SED" id="q84-4g-FSS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GL7-vX-NPg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-882" y="97"/>
+            <point key="canvasLocation" x="335.19999999999999" y="96.7016491754123"/>
         </scene>
         <!--Main Data View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -252,7 +245,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2039.2" y="96.7016491754123"/>
+            <point key="canvasLocation" x="2978.4000000000001" y="96.7016491754123"/>
         </scene>
         <!--Todays Triggers Controller-->
         <scene sceneID="Tsb-1k-TlW">
@@ -328,7 +321,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ngy-M1-mJk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2828" y="96.7016491754123"/>
+            <point key="canvasLocation" x="3767.1999999999998" y="96.7016491754123"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="SN8-5Q-hrJ">
@@ -365,7 +358,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AMZ-BZ-Psd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4568.8000000000002" y="96.7016491754123"/>
+            <point key="canvasLocation" x="5508" y="96.7016491754123"/>
         </scene>
         <!--Triggers-->
         <scene sceneID="1Q9-rb-3y3">
@@ -403,7 +396,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lGL-0p-O67" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3813.5999999999999" y="823.53823088455783"/>
+            <point key="canvasLocation" x="4752.8000000000002" y="823.53823088455783"/>
         </scene>
         <!--Detail Trigger View Contoller-->
         <scene sceneID="jaX-jf-LNc">
@@ -443,12 +436,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NK5-Ms-VEr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4519.1999999999998" y="831.63418290854577"/>
+            <point key="canvasLocation" x="5458.3999999999996" y="831.63418290854577"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="tGk-wQ-j6x">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="JCK-wK-BDh" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarID" automaticallyAdjustsScrollViewInsets="NO" id="JCK-wK-BDh" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="KbV-yW-aTK">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -460,12 +453,12 @@
                         <segue destination="0x1-jo-XZ1" kind="relationship" relationship="viewControllers" id="Znq-bN-l3j"/>
                         <segue destination="7X5-Bg-10W" kind="relationship" relationship="viewControllers" id="L8o-yU-UWq"/>
                         <segue destination="HlF-mC-NPz" kind="relationship" relationship="viewControllers" id="ptS-TV-AnM"/>
-                        <segue destination="o3L-aO-Xn0" kind="relationship" relationship="viewControllers" id="WHG-Ph-qdj"/>
+                        <segue destination="o3L-aO-Xn0" kind="relationship" relationship="viewControllers" id="IdL-Jb-YWC"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YsN-iT-O9Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="160.80000000000001" y="96.7016491754123"/>
+            <point key="canvasLocation" x="1100" y="96.7016491754123"/>
         </scene>
         <!--Medications-->
         <scene sceneID="aoB-kF-qXp">
@@ -503,7 +496,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UwZ-ZI-OOy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1486" y="841"/>
+            <point key="canvasLocation" x="2424.8000000000002" y="840.62968515742136"/>
         </scene>
         <!--Detail Med View Controller-->
         <scene sceneID="cfq-zQ-kdz">
@@ -521,16 +514,16 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Py6-N3-KUY">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="30.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dose: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PaN-e2-5HD">
-                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="30.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jfj-P3-83P">
-                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="30.5"/>
+                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
@@ -538,16 +531,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="2Df-MZ-diI">
-                                        <rect key="frame" x="0.0" y="50.5" width="375" height="30.5"/>
+                                        <rect key="frame" x="0.0" y="50" width="375" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To be taken every __ hours:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cdf-wx-N34">
-                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="30.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fMN-c8-saU">
-                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="30.5"/>
+                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
@@ -555,16 +548,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="XWs-7E-kpD">
-                                        <rect key="frame" x="0.0" y="101" width="375" height="30.5"/>
+                                        <rect key="frame" x="0.0" y="100" width="375" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Appearance: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xig-Sc-DS6">
-                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="30.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What does it look like?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GPM-a0-z4S">
-                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="30.5"/>
+                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
@@ -572,13 +565,13 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MRZ-Za-zPU">
-                                        <rect key="frame" x="0.0" y="151.5" width="375" height="60.5"/>
+                                        <rect key="frame" x="0.0" y="150" width="375" height="61.5"/>
                                     </stackView>
                                     <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="248" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Nnd-nx-Unq">
-                                        <rect key="frame" x="0.0" y="232" width="375" height="265.5"/>
+                                        <rect key="frame" x="0.0" y="231.5" width="375" height="270"/>
                                     </imageView>
                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Yj-7k-JSE">
-                                        <rect key="frame" x="0.0" y="517.5" width="375" height="16.5"/>
+                                        <rect key="frame" x="0.0" y="521.5" width="375" height="12.5"/>
                                         <items>
                                             <barButtonItem systemItem="camera" id="IC3-He-STi">
                                                 <connections>
@@ -614,7 +607,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Npf-Rs-3dN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2184.8000000000002" y="840.62968515742136"/>
+            <point key="canvasLocation" x="3124" y="840.62968515742136"/>
         </scene>
         <!--Triggers-->
         <scene sceneID="IRW-BG-dXj">
@@ -633,12 +626,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DEd-lG-iq3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2874.4000000000001" y="823.53823088455783"/>
+            <point key="canvasLocation" x="3813.5999999999999" y="823.53823088455783"/>
         </scene>
-        <!--Graph-->
+        <!--Item-->
         <scene sceneID="UtZ-BD-Gdt">
             <objects>
-                <viewController id="o3L-aO-Xn0" customClass="MainGraphViewController" customModule="UC_CoreData_Test" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainGraphID" id="o3L-aO-Xn0" customClass="MainGraphViewController" customModule="UC_CoreData_Test" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="33t-8C-Hg0"/>
                         <viewControllerLayoutGuide type="bottom" id="GDe-OJ-Mh6"/>
@@ -666,7 +659,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Graph" id="qoY-hf-4rg"/>
+                    <tabBarItem key="tabBarItem" title="Item" id="kkX-7B-2PB"/>
+                    <navigationItem key="navigationItem" id="gVE-hc-ePG"/>
                     <connections>
                         <outlet property="graph" destination="v6E-zj-s3y" id="LeD-OI-Z4j"/>
                         <outlet property="graphPicker" destination="wRG-QM-D6X" id="xQV-f9-LxO"/>
@@ -674,7 +668,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zVO-1E-P2I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-649" y="841"/>
+            <point key="canvasLocation" x="272.80000000000001" y="823.53823088455783"/>
         </scene>
         <!--Settings-->
         <scene sceneID="xGX-6A-wDt">
@@ -735,7 +729,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tee-cH-vSc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="160.80000000000001" y="861.3193403298352"/>
+            <point key="canvasLocation" x="1100" y="861.3193403298352"/>
         </scene>
         <!--Medications-->
         <scene sceneID="HO2-tN-fpN">
@@ -754,12 +748,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rET-wT-FUF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="797.60000000000002" y="840.62968515742136"/>
+            <point key="canvasLocation" x="1736.8" y="840.62968515742136"/>
         </scene>
         <!--Data Entry-->
         <scene sceneID="WmI-lC-DEU">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2PD-gH-jlP" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavCntrlID" automaticallyAdjustsScrollViewInsets="NO" id="2PD-gH-jlP" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Data Entry" id="BG0-s3-fz7"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="k2v-J9-EOk">
@@ -773,7 +767,23 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t0h-vl-dXt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1100" y="96.7016491754123"/>
+            <point key="canvasLocation" x="2039.2" y="96.7016491754123"/>
+        </scene>
+        <!--Graph-->
+        <scene sceneID="P7u-pZ-TQw">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B37-jE-T2T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Uhn-d2-o2B" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Graph" id="qoY-hf-4rg"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5Mx-SD-UNJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-666.39999999999998" y="823.53823088455783"/>
         </scene>
     </scenes>
 </document>
