@@ -15,7 +15,8 @@ import Firebase
 class TodaysTriggersController: UITableViewController {
     //var triggers: Triggers!
     
-    var triggers: [Trigger] = [] 
+    //var triggers: [Trigger] = []
+    var triggers: [String] = []
     
     var activityLevel: Int!
     var numStools: Int!
@@ -54,7 +55,7 @@ class TodaysTriggersController: UITableViewController {
     }
     
     func createTrigger(withName name: String) {
-        let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
+        /*let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         
         let trig = Trigger(context: context)
@@ -72,7 +73,15 @@ class TodaysTriggersController: UITableViewController {
         
         let indexPath = IndexPath(row: triggers.count - 1, section: 0)
         // Insert this new row into the table
-        tableView.insertRows(at: [indexPath], with: .automatic)
+        tableView.insertRows(at: [indexPath], with: .automatic)*/
+        
+        guard let database = ref, let user = uid else {
+            return
+        }
+        
+        database.child("users").child(user).child("triggers").childByAutoId().setValue(["name": name])
+        
+        populate()
         
     }
     
@@ -252,7 +261,10 @@ class TodaysTriggersController: UITableViewController {
          that is at the nth index of items, where n = row this cell
          will appear in on the tableView */
         //let trigName = triggers.triggerNames[indexPath.row]
-        let trigName = triggers[indexPath.row].name
+        
+        //let trigName = triggers[indexPath.row].name
+        
+        let trigName = triggers[indexPath.row]
         
         cell.nameLabel.text = trigName
         
@@ -278,14 +290,14 @@ class TodaysTriggersController: UITableViewController {
         tableView.estimatedRowHeight = 65
         
         let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
+        /*let context = appDelegate.persistentContainer.viewContext
         
         do {
-            self.triggers = try context.fetch(Trigger.fetchRequest()) as! [Trigger]
+            //self.triggers = try context.fetch(Trigger.fetchRequest()) as! [Trigger]
         }
         catch {
             print("ERROR")
-        }
+        }*/
         
         ref = FIRDatabase.database().reference()
         
@@ -295,6 +307,60 @@ class TodaysTriggersController: UITableViewController {
         }
         
         self.uid = currentUserID
+        
+        print("set id")
+        
+        ref!.child("users").child(currentUserID).child("triggers").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            print("in closure")
+            
+            var currentTriggers = [String]()
+            let dictionary = snapshot.value as? NSDictionary
+            if let d = dictionary {
+                for (_, v) in  d{
+                    let valueDict = v as? NSDictionary
+                    if let val = valueDict {
+                        currentTriggers.append(val.object(forKey: "name") as! String)
+                        print("added val")
+                    }
+                }
+            }
+            
+            self.triggers = currentTriggers
+            
+            print("triggers: \(self.triggers)")
+            
+            self.tableView.reloadData()
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+    }
+    
+    func populate() {
+        
+        guard let userID = uid else {
+            return
+        }
+        
+        ref?.child("users").child(userID).child("triggers").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            var currentTriggers = [String]()
+            let dictionary = snapshot.value as? NSDictionary
+            if let d = dictionary {
+                for (_, v) in  d{
+                    let valueDict = v as? NSDictionary
+                    if let val = valueDict { currentTriggers.append(val.object(forKey: "name") as! String) }
+                }
+            }
+            
+            self.triggers = currentTriggers
+            
+            self.tableView.reloadData()
+        }) { (error) in
+            print(error.localizedDescription)
+        }
     }
     
     @IBAction func done(_ sender: Any) {
