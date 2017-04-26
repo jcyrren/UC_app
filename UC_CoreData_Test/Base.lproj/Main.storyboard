@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="JCK-wK-BDh">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="JCK-wK-BDh">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -101,7 +101,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="aWL-h3-IRa">
                                 <rect key="frame" x="24" y="16" width="327" height="538"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How are you? " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NcY-IC-Ixd">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How are you? " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NcY-IC-Ixd" userLabel="Greeting">
                                         <rect key="frame" x="0.0" y="0.0" width="327" height="53.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
                                         <nil key="textColor"/>
@@ -244,6 +244,7 @@
                     <connections>
                         <outlet property="abdPain" destination="CCL-0r-gch" id="3vV-Cf-woN"/>
                         <outlet property="activityLevel" destination="etS-gM-QJ3" id="dTg-jg-2L5"/>
+                        <outlet property="greeting" destination="NcY-IC-Ixd" id="4cE-Yf-zlb"/>
                         <outlet property="nocturnal" destination="AOF-y0-rbt" id="a3l-SC-YEd"/>
                         <outlet property="numStools" destination="ict-yD-Zv9" id="HHf-VI-jj0"/>
                         <outlet property="rectBleeding" destination="Mw0-3i-8OA" id="sA0-Yo-ukV"/>
@@ -584,9 +585,9 @@
         <scene sceneID="IRW-BG-dXj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0x1-jo-XZ1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Triggers" id="lKS-eP-zCo"/>
+                    <tabBarItem key="tabBarItem" title="Triggers" image="trigger_icon" id="lKS-eP-zCo"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="h3I-g3-E7n">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="h3I-g3-E7n">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -705,9 +706,9 @@
         <scene sceneID="HO2-tN-fpN">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7X5-Bg-10W" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Medications" id="mxB-Ud-FKW"/>
+                    <tabBarItem key="tabBarItem" title="Medications" image="meds_icon" id="mxB-Ud-FKW"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="c8t-fj-f6l">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="c8t-fj-f6l">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -724,7 +725,7 @@
         <scene sceneID="WmI-lC-DEU">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2PD-gH-jlP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Data Entry" id="BG0-s3-fz7"/>
+                    <tabBarItem key="tabBarItem" title="Data Entry" image="icon_querey" id="BG0-s3-fz7"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="k2v-J9-EOk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -740,4 +741,10 @@
             <point key="canvasLocation" x="1100" y="96.7016491754123"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_querey" width="25" height="25"/>
+        <image name="meds_icon" width="25" height="25"/>
+        <image name="trigger_icon" width="25" height="25"/>
+    </resources>
+    <color key="tintColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
 </document>

@@ -12,6 +12,7 @@ import UIKit
 
 class MainDataViewController: UIViewController {
     
+    @IBOutlet var greeting: UILabel!
     @IBOutlet var activityLevel: UISegmentedControl!
     @IBOutlet var nocturnal: UISegmentedControl!
     @IBOutlet var numStools: UISegmentedControl!
@@ -25,6 +26,9 @@ class MainDataViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let adjectives = ["Hello! Nice to see you!", "How are you doing this on this fine day?", "Eyy 'sup?", "I'm glad you're back."]
+        let idx = arc4random_uniform(UInt32(adjectives.count))
+        greeting.text = adjectives[Int(idx)]
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
