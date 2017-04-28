@@ -476,9 +476,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="jNK-eU-YdZ" kind="show" identifier="showMed" id="8Y7-WQ-d23"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -501,7 +498,7 @@
         <!--Detail Med View Controller-->
         <scene sceneID="cfq-zQ-kdz">
             <objects>
-                <viewController id="jNK-eU-YdZ" customClass="DetailMedViewController" customModule="UC_CoreData_Test" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailMed" id="jNK-eU-YdZ" customClass="DetailMedViewController" customModule="UC_CoreData_Test" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="x2a-if-zc7"/>
                         <viewControllerLayoutGuide type="bottom" id="grB-9O-kPv"/>
@@ -511,19 +508,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="h75-cr-rSp">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Py6-N3-KUY">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dose: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PaN-e2-5HD">
-                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="35"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jfj-P3-83P">
-                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="30"/>
+                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="35"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
@@ -531,16 +528,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="2Df-MZ-diI">
-                                        <rect key="frame" x="0.0" y="50" width="375" height="30"/>
+                                        <rect key="frame" x="0.0" y="55" width="375" height="35"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To be taken every __ hours:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cdf-wx-N34">
-                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="35"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fMN-c8-saU">
-                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="30"/>
+                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="35"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
@@ -548,16 +545,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="XWs-7E-kpD">
-                                        <rect key="frame" x="0.0" y="100" width="375" height="30"/>
+                                        <rect key="frame" x="0.0" y="110" width="375" height="35"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Appearance: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xig-Sc-DS6">
-                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="35"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What does it look like?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GPM-a0-z4S">
-                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="30"/>
+                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="35"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
@@ -565,13 +562,13 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MRZ-Za-zPU">
-                                        <rect key="frame" x="0.0" y="150" width="375" height="61.5"/>
+                                        <rect key="frame" x="0.0" y="165" width="375" height="72"/>
                                     </stackView>
                                     <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="248" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Nnd-nx-Unq">
-                                        <rect key="frame" x="0.0" y="231.5" width="375" height="270"/>
+                                        <rect key="frame" x="0.0" y="257" width="375" height="315.5"/>
                                     </imageView>
                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Yj-7k-JSE">
-                                        <rect key="frame" x="0.0" y="521.5" width="375" height="12.5"/>
+                                        <rect key="frame" x="0.0" y="592.5" width="375" height="34.5"/>
                                         <items>
                                             <barButtonItem systemItem="camera" id="IC3-He-STi">
                                                 <connections>
@@ -581,7 +578,7 @@
                                         </items>
                                     </toolbar>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0FR-p4-aFR">
-                                        <rect key="frame" x="0.0" y="554" width="375" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="647" width="375" height="0.0"/>
                                         <state key="normal" title="Save Medication"/>
                                         <connections>
                                             <action selector="saveMed:" destination="jNK-eU-YdZ" eventType="touchUpInside" id="PqX-jg-Hrb"/>
@@ -734,7 +731,7 @@
         <!--Medications-->
         <scene sceneID="HO2-tN-fpN">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7X5-Bg-10W" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MedNav" automaticallyAdjustsScrollViewInsets="NO" id="7X5-Bg-10W" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Medications" id="mxB-Ud-FKW"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="c8t-fj-f6l">
@@ -772,7 +769,6 @@
         <!--Graph-->
         <scene sceneID="P7u-pZ-TQw">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="B37-jE-T2T" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Uhn-d2-o2B" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Graph" id="qoY-hf-4rg"/>
                     <toolbarItems/>
@@ -782,6 +778,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B37-jE-T2T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-666.39999999999998" y="823.53823088455783"/>
         </scene>
