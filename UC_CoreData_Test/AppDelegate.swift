@@ -36,6 +36,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //let mainGraphVC = navCntrl.viewControllers[0] as! MainGraphViewController
         window?.rootViewController = tabCntrl//navCntrl//mainGraphVC
     }
+    
+    func showDetailMed(withMedName name: String, withMedData med: NSDictionary) {
+        let detailMed = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailMed") as! DetailMedViewController
+        detailMed.med = med
+        detailMed.medName = name
+        let navCntrl = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MedNav") as! UINavigationController
+        navCntrl.pushViewController(detailMed, animated: true)
+        window?.rootViewController = navCntrl
+    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

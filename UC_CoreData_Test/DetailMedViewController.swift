@@ -13,6 +13,27 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
+// This is taken from online: https://gist.github.com/stinger/a8a0381a57b4ac530dd029458273f31a
+extension String {
+    //: ### Base64 encoding a string
+    /*func base64Encoded() -> Data? {
+        if let data = self.data(using: .utf8) {
+            return data.base64EncodedString()
+            return data
+        }
+        return nil
+    }*/
+    
+    //: ### Base64 decoding a string
+    func base64Decoded() -> Data? {
+        if let data = Data(base64Encoded: self) {
+            //return String(data: data, encoding: .utf8)
+            return data
+        }
+        return nil
+    }
+}
+
 class DetailMedViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     @IBOutlet var imageView: UIImageView!
@@ -23,7 +44,10 @@ class DetailMedViewController: UIViewController, UITextFieldDelegate, UINavigati
         }
     }
         
-    var med: Medication!
+    //var med: Medication!
+    
+    //var med: NSDictionary?
+    var med: NSDictionary!
     
     var medDose: Double?
     
@@ -35,7 +59,8 @@ class DetailMedViewController: UIViewController, UITextFieldDelegate, UINavigati
     
     let imagePicker = UIImagePickerController()
     
-    var data: NSData?
+    //var data: NSData?
+    var data: Data?
     
     var ref: FIRDatabaseReference?
     var uid: String?
@@ -51,31 +76,8 @@ class DetailMedViewController: UIViewController, UITextFieldDelegate, UINavigati
         self.appTF.delegate = self
         self.freqTF.delegate = self
         
-        self.appearance = self.med.appearance
-        self.medDose = self.med.dosage
-        self.medFreq = self.med.dailyFreq
-        
-        self.key = self.med.imageKey
-        print("key in class: \(self.key)")
-        
-        self.appTF.text = self.appearance!
-        self.doseTF.text = String(self.medDose!)
-        self.freqTF.text = String(self.medFreq!)
-        
-        self.data = self.med.imageData
-        
-        if let imageData = data {
-            if let imageToDisplay = UIImage(data: imageData as Data) {
-                imageView.image = imageToDisplay
-            }
-        }
-        
-        print("image in view: \(imageView.image)")
-        
-        imagePicker.delegate = self
-        
         let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
-
+        
         ref = FIRDatabase.database().reference()
         
         guard let currentUserID = appDelegate.uid else {
@@ -84,10 +86,74 @@ class DetailMedViewController: UIViewController, UITextFieldDelegate, UINavigati
         }
         
         self.uid = currentUserID
+        
+        //self.retrieveMed()
+        
+        /*
+        self.appearance = self.med.appearance
+        self.medDose = self.med.dosage
+        self.medFreq = self.med.dailyFreq
+        
+        self.key = self.med.imageKey
+        print("key in class: \(self.key)")*/
+        
+        self.appearance = med.object(forKey: "appearance") as? String
+        self.medDose = med.object(forKey: "dosage") as? Double
+        self.medFreq = med.object(forKey: "dailyFreq") as? Int32
+        
+        self.key = med.object(forKey: "imageKey") as? String
+        
+        
+        let dose: Double = self.medDose ?? 0.0
+        let freq: Int32 = self.medFreq ?? 0
+        
+        self.appTF.text = self.appearance ?? ""
+        self.doseTF.text = "\(dose)"
+        self.freqTF.text = "\(freq)"
+        
+        //self.data = self.med.imageData
+        /*let dataString = med?.object(forKey: "imageData") as? String
+        guard let ds = dataString else {
+            self.data = nil
+            return
+        }
+        self.data = Data(base64Encoded: ds) as? NSData*/
+        
+        let dataString = med?.object(forKey: "imageData") as? String
+        //self.data = dataString?.data(using: .)
+        self.data = dataString?.base64Decoded()
+        
+        print("data: \(self.data)")
+        
+        if let imageData = data {
+            print("able to open data")
+            if let imageToDisplay = UIImage(data: imageData as Data) {
+                print("put image in view")
+                imageView.image = imageToDisplay
+            }
+        }
+        
+        print("image in view: \(imageView.image)")
+        
+        imagePicker.delegate = self
+
+    }
+    
+    func retrieveMed() {
+        
+        print("retrieving med")
+        
+        guard let database = ref, let currentUserID = uid else {
+            print("could not retrieve")
+            return
+        }
+        database.child("users").child(currentUserID).child("medications").child(medName).observeSingleEvent(of: .value, with: { (snapshot) in
+                self.med = snapshot.value as? NSDictionary
+        })
     }
     
     @IBAction func saveMed(_ sender: Any) {
-        let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
+        /*let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         
         print("original \(med)")
@@ -114,13 +180,44 @@ class DetailMedViewController: UIViewController, UITextFieldDelegate, UINavigati
         appDelegate.saveContext()
         med = newMed
         print("saving \(med)")
-        
+        */
         // FIREBASE!!!!
         guard let database = ref, let user = uid else {
             return
         }
         
-        database.child("users").child(user).child("medications").child("\(medName)").setValue(["name": medName, "imageKey": key ?? "", "imageData": data, "dosage": (Double(doseTF.text!) ?? 0.0) , "dailyFreq": (Int32(doseTF.text!) ?? 0), "appearance": appTF.text!])
+        print("pre-opening, about to save: \(data)")
+        
+        if let openedData = data {
+           // let dataString = String(data: openedData, encoding: .utf8)
+            let dataString = openedData.base64EncodedString()
+            print("data string: \(dataString)")
+            print("med name: \(medName)")
+/*let key = ref.child("posts").childByAutoId().key
+ let post = ["uid": userID,
+ "author": username,
+ "title": title,
+ "body": body]
+ let childUpdates = ["/posts/\(key)": post,
+ "/user-posts/\(userID)/\(key)/": post]
+ ref.updateChildValues(childUpdates)*/
+            //let key = database.child("users").child(user).child("medications").child("\(medName)")
+            let updated_medication = ["imageKey": key ?? "", "imageData": dataString ?? "", "dosage": (Double(doseTF.text!) ?? 0.0) , "dailyFreq": (Int32(freqTF.text!) ?? 0), "appearance": appTF.text!] as [String : Any]
+            let childUpdate = ["/users/\(user)/medications/\(medName!)": updated_medication]
+            database.updateChildValues(childUpdate)
+            //database.child("users").child(user).child("medications").child("\(medName)").setValue(["imageKey": key ?? "", "imageData": dataString ?? "", "dosage": (Double(doseTF.text!) ?? 0.0) , "dailyFreq": (Int32(freqTF.text!) ?? 0), "appearance": appTF.text!])
+        } else {
+            print("med name, no data: \(medName)")
+            
+            //let key = database.child("users").child(user).child("medications").child("\(medName)")
+            let updated_medication = ["imageKey": key ?? "", "imageData": "", "dosage": (Double(doseTF.text!) ?? 0.0) , "dailyFreq": (Int32(freqTF.text!) ?? 0), "appearance": appTF.text!] as [String : Any]
+            let childUpdate = ["/users/\(user)/medications/\(medName!)": updated_medication]
+            database.updateChildValues(childUpdate)
+            
+            //database.child("users").child(user).child("medications").child("\(medName)").setValue(["imageKey": key ?? "", "imageData": "", "dosage": (Double(doseTF.text!) ?? 0.0) , "dailyFreq": (Int32(freqTF.text!) ?? 0), "appearance": appTF.text!])
+        }
+        
+        
     
     }
     
@@ -158,8 +255,10 @@ class DetailMedViewController: UIViewController, UITextFieldDelegate, UINavigati
         
         let image = self.resizeImage(image: chosenImage, targetSize: CGSize.init(width: 100, height: 100))
         
-        let data = UIImagePNGRepresentation(image) as NSData?
+        let data = UIImagePNGRepresentation(image)//as NSData?
         self.data = data
+        
+        print("data created: \(self.data)")
         
         imageView.image = image
         
