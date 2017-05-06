@@ -70,6 +70,30 @@ class AuthenticationViewController: UIViewController {
         }
     }
     
+    @IBAction func forgotPassword(_ sender: Any) {
+        
+        let alert = UIAlertController(title: "Forgot Password", message: "Enter email linked with account. You will recieve an email to reset password.", preferredStyle: .alert)
+        
+        let sendAction = UIAlertAction(title: "Send", style: .default){(_) in
+            let emailTF = alert.textFields![0]
+            let email = emailTF.text!
+            
+            FIRAuth.auth()?.sendPasswordReset(withEmail: email) { error in
+                // Add code if need be
+            }
+            
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addTextField(configurationHandler: nil)
+        
+        alert.addAction(sendAction)
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    
     func segueToTabCntrl() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.switchToTabCntrl()
