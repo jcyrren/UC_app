@@ -27,6 +27,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use Firebase library to configure APIs
         FIRApp.configure()
         
+        FIRAuth.auth()?.addStateDidChangeListener { auth, user in
+            if let user = user {
+                // User is signed in.
+                self.uid = user.uid
+                self.switchToTabCntrl()
+            } else {
+                // No user is signed in.
+                // this will just go straight to the log-in view
+            }
+        }
+        
         return true
     }
     
