@@ -46,7 +46,7 @@ class GraphView: UIView {
         
         var modvals : [Int] = []
         for n in 1...number {
-            newDates.insert(dates[dates.count - n], at: 0)
+            //newDates.insert(dates[dates.count - n], at: 0)
             modvals.insert(vals[vals.count - n], at: 0)
         }
         var finalvals : [Int] = []

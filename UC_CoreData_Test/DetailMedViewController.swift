@@ -38,6 +38,7 @@ class DetailMedViewController: UIViewController, UITextFieldDelegate, UINavigati
     
     //var medIndex: Int!
     
+    @IBOutlet var medTime: UIDatePicker!
     @IBOutlet var doseTF: UITextField!
     @IBOutlet var freqTF: UITextField!
     @IBOutlet var appTF: UITextField!
@@ -93,8 +94,16 @@ class DetailMedViewController: UIViewController, UITextFieldDelegate, UINavigati
         appDelegate.saveContext()
         med = newMed
         print(med)
+        var calendarUnitFlags: NSCalendar.Unit = [.year, .month, .day, .hour, .minute, .second]
+       // var dateComponents = NSCalendar.currentCalendar.components(fromDate: NSDate())
+       // dateComponents.year
+       // dateComponents.month
+       // dateComponents.day
+       // dateComponents.hour
+       // dateComponents.minute
+       // dateComponents.second
         if (newMed.dailyFreq != 0) {
-            nm.newNotification(med: newMed.name ?? "Medication", mph: newMed.dailyFreq, appearance: newMed.appearance ?? "None given. :(")
+         //   nm.newNotification(med: newMed.name ?? "Medication", mph: newMed.dailyFreq, appearance: newMed.appearance ?? "None given. :(", fire: DateComponents(calendar: medTime.date))
         }
         else {
             //nm.cancelAll()

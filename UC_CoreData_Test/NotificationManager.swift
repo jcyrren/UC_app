@@ -40,7 +40,7 @@ class NotificationsManager {
     
     
     
-    func newNotification(med: String, mph: Int32, appearance: String) {
+    func newNotification(med: String, mph: Int32, appearance: String, fire: DateComponents) {
         let center = UNUserNotificationCenter.current()
         
         let content = UNMutableNotificationContent()
@@ -54,10 +54,40 @@ class NotificationsManager {
         var dateComponents = DateComponents()
         dateComponents.hour = 0
         dateComponents.minute = 0
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(mph)*Double(60), repeats: true)
+        //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(mph)*Double(60), repeats: true)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: fire, repeats: true)
         
         let request = UNNotificationRequest(identifier: med, content: content, trigger: trigger)
         center.add(request)
+    }
+    
+    func timedNotification(med: String, appearance: String, fire: NSDate) {
+        let date = Date()
+        let calendar = Calendar.current
+        
+        let year = calendar.component(.year, from: date)
+        let month = calendar.component(.month, from: date)
+        let day = calendar.component(.day, from: date)
+        
+        var dateComp:NSDateComponents = NSDateComponents()
+        dateComp.year = year;
+        dateComp.month = month;
+        dateComp.day = day;
+        dateComp.hour = 12;
+        dateComp.minute = 55;
+        dateComp.timeZone = NSTimeZone.system
+        
+        var calender:NSCalendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!
+        //var date:NSDate = calender.date(from: dateComp as DateComponents)! as NSDate
+        /*
+        var notification:UILocalNotification = UILocalNotification()
+        notification.category = "Daily Quote"
+        notification.alertBody = quoteBook.randomQuote()
+        notification.fireDate = date
+        notification.repeatInterval =
+            
+            UIApplication.sharedApplication().scheduleLocalNotification(notification)
+    */
     }
     
     

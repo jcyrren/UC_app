@@ -29,6 +29,17 @@ class MainDataViewController: UIViewController {
         let adjectives = ["Hello! Nice to see you!", "How are you doing this on this fine day?", "Eyy 'sup?", "I'm glad you're back."]
         let idx = arc4random_uniform(UInt32(adjectives.count))
         greeting.text = adjectives[Int(idx)]
+        
+        [[UILabel appearance] setSubstituteFontName:@"Aileron-Light"];
+        
+        for family: String in UIFont.familyNames
+        {
+            print("\(family)")
+            for names: String in UIFont.fontNames(forFamilyName: family)
+            {
+                print("== \(names)")
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -32,6 +32,25 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Aileron-Black.otf</string>
+		<string>Aileron-BlackItalic.otf</string>
+		<string>Aileron-Bold.otf</string>
+		<string>Aileron-BoldItalic.otf</string>
+		<string>Aileron-Heavy.otf</string>
+		<string>Aileron-HeavyItalic.otf</string>
+		<string>Aileron-Italic.otf</string>
+		<string>Aileron-Light.otf</string>
+		<string>Aileron-LightItalic.otf</string>
+		<string>Aileron-Regular.otf</string>
+		<string>Aileron-SemiBold.otf</string>
+		<string>Aileron-SemiBoldItalic.otf</string>
+		<string>Aileron-Thin.otf</string>
+		<string>Aileron-ThinItalic.otf</string>
+		<string>Aileron-UltraLight.otf</string>
+		<string>Aileron-UltraLightItalic.otf</string>
+	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
